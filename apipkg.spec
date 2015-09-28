@@ -4,7 +4,7 @@
 #
 Name     : apipkg
 Version  : 1.4
-Release  : 2
+Release  : 3
 URL      : https://pypi.python.org/packages/source/a/apipkg/apipkg-1.4.tar.gz
 Source0  : https://pypi.python.org/packages/source/a/apipkg/apipkg-1.4.tar.gz
 Summary  : apipkg: namespace control and lazy-import mechanism
