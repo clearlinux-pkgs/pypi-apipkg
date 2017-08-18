@@ -4,9 +4,9 @@
 #
 Name     : apipkg
 Version  : 1.4
-Release  : 10
-URL      : https://pypi.python.org/packages/source/a/apipkg/apipkg-1.4.tar.gz
-Source0  : https://pypi.python.org/packages/source/a/apipkg/apipkg-1.4.tar.gz
+Release  : 11
+URL      : http://pypi.debian.net/apipkg/apipkg-1.4.tar.gz
+Source0  : http://pypi.debian.net/apipkg/apipkg-1.4.tar.gz
 Summary  : apipkg: namespace control and lazy-import mechanism
 Group    : Development/Tools
 License  : MIT
@@ -23,14 +23,14 @@ BuildRequires : tox
 BuildRequires : virtualenv
 
 %description
-Welcome to apipkg!
 ------------------------
-With apipkg you can control the exported namespace of a
-python package and greatly reduce the number of imports for your users.
-It is a `small pure python module`_ that works on virtually all Python
-versions, including CPython2.3 to Python3.1, Jython and PyPy.  It co-operates
-well with Python's ``help()`` system, custom importers (PEP302) and common
-command line completion tools.
+        
+        With apipkg you can control the exported namespace of a
+        python package and greatly reduce the number of imports for your users.
+        It is a `small pure python module`_ that works on virtually all Python
+        versions, including CPython2.3 to Python3.1, Jython and PyPy.  It co-operates
+        well with Python's ``help()`` system, custom importers (PEP302) and common
+        command line completion tools.
 
 %package python
 Summary: python components for the apipkg package.
@@ -44,20 +44,27 @@ python components for the apipkg package.
 %setup -q -n apipkg-1.4
 
 %build
+export http_proxy=http://127.0.0.1:9/
+export https_proxy=http://127.0.0.1:9/
+export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1487900192
+export SOURCE_DATE_EPOCH=1503071619
 python2 setup.py build -b py2
 python3 setup.py build -b py3
 
 %install
-export SOURCE_DATE_EPOCH=1487900192
+export SOURCE_DATE_EPOCH=1503071619
 rm -rf %{buildroot}
 python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
 python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
+echo ----[ mark ]----
+cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
+echo ----[ mark ]----
 
 %files
 %defattr(-,root,root,-)
 
 %files python
 %defattr(-,root,root,-)
-/usr/lib/python*/*
+/usr/lib/python2*/*
+/usr/lib/python3*/*
