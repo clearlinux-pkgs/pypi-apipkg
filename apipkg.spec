@@ -4,13 +4,14 @@
 #
 Name     : apipkg
 Version  : 1.4
-Release  : 13
+Release  : 14
 URL      : http://pypi.debian.net/apipkg/apipkg-1.4.tar.gz
 Source0  : http://pypi.debian.net/apipkg/apipkg-1.4.tar.gz
 Summary  : apipkg: namespace control and lazy-import mechanism
 Group    : Development/Tools
 License  : MIT
 Requires: apipkg-legacypython
+Requires: apipkg-python3
 Requires: apipkg-python
 BuildRequires : pbr
 BuildRequires : pip
@@ -45,9 +46,18 @@ legacypython components for the apipkg package.
 Summary: python components for the apipkg package.
 Group: Default
 Requires: apipkg-legacypython
+Requires: apipkg-python3
 
 %description python
 python components for the apipkg package.
+
+
+%package python3
+Summary: python3 components for the apipkg package.
+Group: Default
+
+%description python3
+python3 components for the apipkg package.
 
 
 %prep
@@ -58,12 +68,12 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1505361773
+export SOURCE_DATE_EPOCH=1506868209
 python2 setup.py build -b py2
 python3 setup.py build -b py3
 
 %install
-export SOURCE_DATE_EPOCH=1505361773
+export SOURCE_DATE_EPOCH=1506868209
 rm -rf %{buildroot}
 python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
 python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
@@ -79,5 +89,8 @@ echo ----[ mark ]----
 /usr/lib/python2*/*
 
 %files python
+%defattr(-,root,root,-)
+
+%files python3
 %defattr(-,root,root,-)
 /usr/lib/python3*/*
