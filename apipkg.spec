@@ -4,7 +4,7 @@
 #
 Name     : apipkg
 Version  : 1.4
-Release  : 21
+Release  : 22
 URL      : http://pypi.debian.net/apipkg/apipkg-1.4.tar.gz
 Source0  : http://pypi.debian.net/apipkg/apipkg-1.4.tar.gz
 Summary  : apipkg: namespace control and lazy-import mechanism
