@@ -4,20 +4,20 @@
 #
 Name     : apipkg
 Version  : 1.4
-Release  : 22
+Release  : 23
 URL      : http://pypi.debian.net/apipkg/apipkg-1.4.tar.gz
 Source0  : http://pypi.debian.net/apipkg/apipkg-1.4.tar.gz
 Summary  : apipkg: namespace control and lazy-import mechanism
 Group    : Development/Tools
 License  : MIT
 Requires: apipkg-python3
+Requires: apipkg-license
 Requires: apipkg-python
 BuildRequires : pbr
 BuildRequires : pip
 BuildRequires : pluggy
 BuildRequires : py-python
 BuildRequires : pytest
-BuildRequires : python-dev
 BuildRequires : python3-dev
 BuildRequires : setuptools
 BuildRequires : tox
@@ -32,6 +32,14 @@ BuildRequires : virtualenv
         versions, including CPython2.3 to Python3.1, Jython and PyPy.  It co-operates
         well with Python's ``help()`` system, custom importers (PEP302) and common
         command line completion tools.
+
+%package license
+Summary: license components for the apipkg package.
+Group: Default
+
+%description license
+license components for the apipkg package.
+
 
 %package python
 Summary: python components for the apipkg package.
@@ -59,11 +67,13 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1523285141
+export SOURCE_DATE_EPOCH=1529090530
 python3 setup.py build -b py3
 
 %install
 rm -rf %{buildroot}
+mkdir -p %{buildroot}/usr/share/doc/apipkg
+cp LICENSE %{buildroot}/usr/share/doc/apipkg/LICENSE
 python3 -tt setup.py build -b py3 install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
@@ -71,6 +81,10 @@ echo ----[ mark ]----
 
 %files
 %defattr(-,root,root,-)
+
+%files license
+%defattr(-,root,root,-)
+/usr/share/doc/apipkg/LICENSE
 
 %files python
 %defattr(-,root,root,-)
