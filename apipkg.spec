@@ -4,7 +4,7 @@
 #
 Name     : apipkg
 Version  : 1.5
-Release  : 40
+Release  : 41
 URL      : http://pypi.debian.net/apipkg/apipkg-1.5.tar.gz
 Source0  : http://pypi.debian.net/apipkg/apipkg-1.5.tar.gz
 Summary  : apipkg: namespace control and lazy-import mechanism
@@ -23,13 +23,13 @@ BuildRequires : tox
 BuildRequires : virtualenv
 
 %description
-Welcome to apipkg!
 ------------------------
-With apipkg you can control the exported namespace of a Python package and
-greatly reduce the number of imports for your users.
-It is a `small pure Python module`_ that works on CPython 2.7 and 3.4+,
-Jython and PyPy. It cooperates well with Python's ``help()`` system,
-custom importers (PEP302) and common command-line completion tools.
+        
+        With apipkg you can control the exported namespace of a Python package and
+        greatly reduce the number of imports for your users.
+        It is a `small pure Python module`_ that works on CPython 2.7 and 3.4+,
+        Jython and PyPy. It cooperates well with Python's ``help()`` system,
+        custom importers (PEP302) and common command-line completion tools.
 
 %package license
 Summary: license components for the apipkg package.
@@ -67,12 +67,11 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1582846038
-# -Werror is for werrorists
+export SOURCE_DATE_EPOCH=1603385811
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
-export FCFLAGS="$CFLAGS -fno-lto "
-export FFLAGS="$CFLAGS -fno-lto "
+export FCFLAGS="$FFLAGS -fno-lto "
+export FFLAGS="$FFLAGS -fno-lto "
 export CXXFLAGS="$CXXFLAGS -fno-lto "
 export MAKEFLAGS=%{?_smp_mflags}
 python3 setup.py build
