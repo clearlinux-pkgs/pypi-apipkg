@@ -4,7 +4,7 @@
 #
 Name     : apipkg
 Version  : 1.5
-Release  : 45
+Release  : 46
 URL      : http://pypi.debian.net/apipkg/apipkg-1.5.tar.gz
 Source0  : http://pypi.debian.net/apipkg/apipkg-1.5.tar.gz
 Summary  : apipkg: namespace control and lazy-import mechanism
