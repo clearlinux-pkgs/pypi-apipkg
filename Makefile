@@ -1,5 +1,5 @@
 PKG_NAME := pypi-apipkg
-URL = https://files.pythonhosted.org/packages/46/90/c54454c5f87ae7c754626cdc71499f6c1b3d7cdd13a4a7f27a20e05a1ad3/apipkg-2.1.0.tar.gz
+URL = https://files.pythonhosted.org/packages/fb/79/d80c1434167b9d0225237a18abe0c28f222aac58abb37ef9c04f19e85828/apipkg-2.1.1.tar.gz
 ARCHIVES = 
 
 include ../common/Makefile.common
