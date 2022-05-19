@@ -4,13 +4,12 @@
 #
 Name     : pypi-apipkg
 Version  : 2.1.1
-Release  : 64
+Release  : 65
 URL      : https://files.pythonhosted.org/packages/fb/79/d80c1434167b9d0225237a18abe0c28f222aac58abb37ef9c04f19e85828/apipkg-2.1.1.tar.gz
 Source0  : https://files.pythonhosted.org/packages/fb/79/d80c1434167b9d0225237a18abe0c28f222aac58abb37ef9c04f19e85828/apipkg-2.1.1.tar.gz
 Summary  : apipkg: namespace control and lazy-import mechanism
 Group    : Development/Tools
 License  : MIT
-Requires: pypi-apipkg-filemap = %{version}-%{release}
 Requires: pypi-apipkg-license = %{version}-%{release}
 Requires: pypi-apipkg-python = %{version}-%{release}
 Requires: pypi-apipkg-python3 = %{version}-%{release}
@@ -33,14 +32,6 @@ It is a `small pure Python module`_ that works on CPython 2.7 and 3.4+,
 Jython and PyPy. It cooperates well with Python's ``help()`` system,
 custom importers (PEP302) and common command-line completion tools.
 
-%package filemap
-Summary: filemap components for the pypi-apipkg package.
-Group: Default
-
-%description filemap
-filemap components for the pypi-apipkg package.
-
-
 %package license
 Summary: license components for the pypi-apipkg package.
 Group: Default
@@ -61,7 +52,6 @@ python components for the pypi-apipkg package.
 %package python3
 Summary: python3 components for the pypi-apipkg package.
 Group: Default
-Requires: pypi-apipkg-filemap = %{version}-%{release}
 Requires: python3-core
 Provides: pypi(apipkg)
 
@@ -81,7 +71,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1652992906
+export SOURCE_DATE_EPOCH=1652994977
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$FFLAGS -fno-lto "
@@ -120,10 +110,6 @@ popd
 
 %files
 %defattr(-,root,root,-)
-
-%files filemap
-%defattr(-,root,root,-)
-/usr/share/clear/filemap/filemap-pypi-apipkg
 
 %files license
 %defattr(0644,root,root,0755)
