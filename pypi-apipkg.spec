@@ -4,7 +4,7 @@
 #
 Name     : pypi-apipkg
 Version  : 3.0.1
-Release  : 67
+Release  : 68
 URL      : https://files.pythonhosted.org/packages/dc/d8/1883595b81446c61380bdfe10e67f593508c688692b2ce6bf9cc1dc4d007/apipkg-3.0.1.tar.gz
 Source0  : https://files.pythonhosted.org/packages/dc/d8/1883595b81446c61380bdfe10e67f593508c688692b2ce6bf9cc1dc4d007/apipkg-3.0.1.tar.gz
 Summary  : apipkg: namespace control and lazy-import mechanism
@@ -65,7 +65,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1654699585
+export SOURCE_DATE_EPOCH=1656355623
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$FFLAGS -fno-lto "
@@ -100,7 +100,7 @@ export FCFLAGS="$FCFLAGS -m64 -march=x86-64-v3 "
 export LDFLAGS="$LDFLAGS -m64 -march=x86-64-v3 "
 pip install --root=%{buildroot}-v3 --no-deps --ignore-installed dist/*.whl
 popd
-/usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot}/usr/share/clear/optimized-elf/ %{buildroot}/usr/share/clear/filemap/filemap-%{name}
+/usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot} %{buildroot}/usr/share/clear/filemap/filemap-%{name}
 
 %files
 %defattr(-,root,root,-)
