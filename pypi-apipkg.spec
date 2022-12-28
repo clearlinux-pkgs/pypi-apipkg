@@ -4,7 +4,7 @@
 #
 Name     : pypi-apipkg
 Version  : 3.0.1
-Release  : 77
+Release  : 78
 URL      : https://files.pythonhosted.org/packages/dc/d8/1883595b81446c61380bdfe10e67f593508c688692b2ce6bf9cc1dc4d007/apipkg-3.0.1.tar.gz
 Source0  : https://files.pythonhosted.org/packages/dc/d8/1883595b81446c61380bdfe10e67f593508c688692b2ce6bf9cc1dc4d007/apipkg-3.0.1.tar.gz
 Summary  : apipkg: namespace control and lazy-import mechanism
@@ -16,6 +16,9 @@ Requires: pypi-apipkg-python3 = %{version}-%{release}
 BuildRequires : buildreq-distutils3
 BuildRequires : pypi(hatch_vcs)
 BuildRequires : pypi(hatchling)
+# Suppress stripping binaries
+%define __strip /bin/true
+%define debug_package %{nil}
 
 %description
 Welcome to apipkg !
@@ -65,12 +68,12 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1666722415
+export SOURCE_DATE_EPOCH=1672250069
 export GCC_IGNORE_WERROR=1
-export CFLAGS="$CFLAGS -fno-lto "
-export FCFLAGS="$FFLAGS -fno-lto "
-export FFLAGS="$FFLAGS -fno-lto "
-export CXXFLAGS="$CXXFLAGS -fno-lto "
+export CFLAGS="$CFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz "
+export FCFLAGS="$FFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz "
+export FFLAGS="$FFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz "
+export CXXFLAGS="$CXXFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz "
 export MAKEFLAGS=%{?_smp_mflags}
 python3 -m build --wheel --skip-dependency-check --no-isolation
 pushd ../buildavx2/
@@ -87,7 +90,7 @@ popd
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/pypi-apipkg
-cp %{_builddir}/apipkg-%{version}/LICENSE %{buildroot}/usr/share/package-licenses/pypi-apipkg/82dbfd684f7c04da81d4faa852c6317142daa3e7 || :
+cp %{_builddir}/apipkg-%{version}/LICENSE %{buildroot}/usr/share/package-licenses/pypi-apipkg/82dbfd684f7c04da81d4faa852c6317142daa3e7
 pip install --root=%{buildroot} --no-deps --ignore-installed dist/*.whl
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
