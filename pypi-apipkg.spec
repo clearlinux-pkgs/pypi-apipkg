@@ -5,7 +5,7 @@
 #
 Name     : pypi-apipkg
 Version  : 3.0.2
-Release  : 81
+Release  : 82
 URL      : https://files.pythonhosted.org/packages/2e/2c/717870bddbb588428093de4bfbce59c58d29b56bff76ecd422fd1724ae72/apipkg-3.0.2.tar.gz
 Source0  : https://files.pythonhosted.org/packages/2e/2c/717870bddbb588428093de4bfbce59c58d29b56bff76ecd422fd1724ae72/apipkg-3.0.2.tar.gz
 Summary  : apipkg: namespace control and lazy-import mechanism
